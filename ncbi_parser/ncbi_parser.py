@@ -1,17 +1,18 @@
-import urllib.request
-import argparse
+from Bio import Entrez, SeqIO
 
-import os, sys, re
+def download_genbank_file():
+    Entrez.email = "wpatt2@pdx.edu"
+    handle = Entrez.efetch(db="nuccore", id="KF874616.1", rettype="gb", retmode='text')
 
-def open_web_page(url):
-    request = urllib.request.Request(url)
-    response = urllib.request.urlopen(request)
-    response_data = response.read()
-    print(str(response_data))
+    genome = SeqIO.read(handle, 'genbank')
+    #print(genome.features)
+    for feature in genome.features:
+        seq = feature.extract(genome.seq)
+        print(feature)
+        print(seq)
+        print("")
 
-    gene_lines = re.findall(r'<span class="feat_h">(.*?)</span>', str(response_data))
-    print (gene_lines)
 
 if __name__ == "__main__":
-    open_web_page("http://www.ncbi.nlm.nih.gov/nuccore/KF874616.1")
+    download_genbank_file()
 
