@@ -2,7 +2,7 @@ from Bio import Entrez, SeqIO
 import argparse
 
 def gb_to_fasta(db_name, id_name, out_fasta):
-    Entrez.email = "arom2@pdx.edu"
+    Entrez.email = "rclaire@pdx.edu"
     handle = Entrez.efetch(db=db_name, id=id_name, rettype="gb", retmode='text')
 
     genome = SeqIO.read(handle, 'genbank')
