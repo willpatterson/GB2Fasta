@@ -6,7 +6,7 @@ setup(name="gb-to-fasta",
       license="MIT",
       author="William Patterson",
       packages=find_packages(),
-      package_data={}
+      package_data={},
       install_requires=["biopython"],
       long_description="",
-      entry_points={"console_scripts": ["gbtofasta=gb-to-fasta.gb-to-fasta:main"],})
+      entry_points={"console_scripts": ["gbtofasta=gb_to_fasta.gb_to_fasta:main"],})
